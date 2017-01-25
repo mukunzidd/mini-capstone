@@ -1,26 +1,19 @@
 class ProductsController < ApplicationController
 	def index
-		@products = Product.all
+		@products = Product.all	
 	end
 
 	def new
+		@product = Product.new
 	end
 
 	def create
-		name = params[:name]
-		description = params[:description]
-		image = params[:image]
-
-		@product = Product.new({name: name, description: description, image: image})
-
-		@product.save
-
-
-		if @product.save
+		@product = Product.new(product_params)	
+		if @product.save(product_params)
 			redirect_to @product
 		else
 			render 'new'
-		end	
+		end
 	end
 
 	def show
@@ -28,15 +21,29 @@ class ProductsController < ApplicationController
 	end
 
 	def edit
-		
+		@product = Product.find(params[:id])
 	end
 
 	def update
-		
+		@product = Product.find(params[:id])
+		if @product.update(product_params)
+			redirect_to @product
+		else
+			render 'edit'
+		end
 	end
 
 	def destroy
-		
+		@product = Product.find(params[:id])
+		if @product.destroy
+			redirect_to root_path	
+		end
 	end
+
+	private
+
+		def product_params
+			params.require(:product).permit(:name, :description, :price, :image)
+		end
 
 end

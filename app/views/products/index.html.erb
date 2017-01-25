@@ -1,3 +1,6 @@
+
+<!-- Product(id: integer, name: string, price: float, image: string, description: text, created_at: datetime, updated_at: datetime) -->
+
 <h1>All Products</h1>
 
 <% @products.each do |product|%>
@@ -5,3 +8,5 @@
 	<h3><%= link_to product.name, product %></h3>
 
 <% end %>
+
+<%= link_to 'New Product', new_product_path %>
