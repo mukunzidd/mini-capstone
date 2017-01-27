@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 	def index
 		@products = Product.all	
+		@slider1 = Product.first
 	end
 
 	def new
