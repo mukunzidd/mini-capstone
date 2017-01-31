@@ -1,7 +1,15 @@
 class ProductsController < ApplicationController
+
+	before_filter :find_products, only: [:show, :edit, :update, :destroy]
+	
 	def index
-		@products = Product.all	
-		@slider1 = Product.first
+		if params[:sort]
+			@products = Product.all.order(price: params[:sort])
+		elsif params[:discount]
+				@products = Product.all
+		else
+				@products = Product.all
+		end
 	end
 
 	def new
@@ -9,8 +17,8 @@ class ProductsController < ApplicationController
 	end
 
 	def create
-		@product = Product.new(product_params)	
-		if @product.save(product_params)
+		@product = Product.new(product_params)
+		if @product.save
 			redirect_to @product
 		else
 			render 'new'
@@ -18,15 +26,12 @@ class ProductsController < ApplicationController
 	end
 
 	def show
-		@product = Product.find(params[:id])
 	end
 
 	def edit
-		@product = Product.find(params[:id])
 	end
 
 	def update
-		@product = Product.find(params[:id])
 		if @product.update(product_params)
 			redirect_to @product
 		else
@@ -35,13 +40,14 @@ class ProductsController < ApplicationController
 	end
 
 	def destroy
-		@product = Product.find(params[:id])
-		if @product.destroy
-			redirect_to root_path	
-		end
+		@product.destroy
+		redirect_to root_path
 	end
 
 	private
+		def find_products
+			@product = Product.find(params[:id])				
+		end
 
 		def product_params
 			params.require(:product).permit(:name, :description, :price, :image)
