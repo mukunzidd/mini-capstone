@@ -23,7 +23,7 @@
       <% slices.each do |product|%>
       <div class="col-md-4">
         <div class="thumbnail">
-          <img src="#" class="img img-responsive" alt="Product Image">
+          <img src="<%= product.images.first.url %>" class="img img-responsive" alt="Product Image">
           <div class="caption">
             <h4 class="pull-right">Rwf <%= product.price %></h4>
             <h4><%= link_to product.name, product %></h4>
