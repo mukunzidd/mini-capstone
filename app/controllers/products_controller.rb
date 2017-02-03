@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 
 	before_filter :find_products, only: [:show, :edit, :update, :destroy]
-	
+
 	def index
 		if params[:sort]
 			@products = Product.all.order(price: params[:sort])
@@ -46,11 +46,11 @@ class ProductsController < ApplicationController
 
 	private
 		def find_products
-			@product = Product.find(params[:id])				
+			@product = Product.find_by(id: params[:id])
 		end
 
 		def product_params
-			params.require(:product).permit(:name, :description, :price, :image)
+			params.require(:product).permit(:name, :description, :price, :supplier_id)
 		end
 
 end

@@ -31,7 +31,7 @@
 											<%= link_to 'New Product', new_product_path %>
 										</li>
                     <li>
-                    		<a href="#">Log In</a>
+                    		<%= link_to 'Log In', login_path %>
                     </li>
                     <li>
                         <a href="#">Sign Up</a>
@@ -42,7 +42,11 @@
         </div>
         <!-- /.container -->
     </nav>
-
+    <div class="container">
+        <% flash.each do |name, message| %>
+        <div class="alert alert-<%= name %>" role="alert"><%= message %>
+        </div>
+   <% end %>
     <%= yield %>
 
      <div class="container">

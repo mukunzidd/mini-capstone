@@ -1,38 +1,38 @@
 <!-- Page Content -->
 <div class="container">
   <div class="row">
-<div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <h1>All Products</h1>
-    </div>
-    <div class="col-md-2"></div>
-    <div class="col-md-6">
-      <ol class="breadcrumb">
-        <span>Sort by:     </span>
-        <li><a href="/products?sort=asc">  Cheapest to expensivest</a></li>
-        <li><a href="/products?sort=desc">  Price Highest to lowest</a></li>
-        <li><a href="/products?discount=true"> On Discount</a></li>
-      </ol>
-    </div>
-  </div>
-</div>
-
-      <% @products.each_slice(3) do |slices|%>
-        <div class="row">
-          <% slices.each do |product|%>
-             <div class="col-md-4">
-                <div class="thumbnail">
-                  <img src="<%= product.image %>" class="img img-responsive" alt="">
-                  <div class="caption">
-                    <h4 class="pull-right">Rwf <%= product.price %></h4>
-                    <h4><%= link_to product.name, product %></h4>
-                    <p><%= product.description %></p>
-                  </div>
-                </div>
-            </div>
-          <% end %> <!-- End of products loop -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h1>All Products</h1>
         </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-6">
+          <ol class="breadcrumb">
+            <span>Sort by:     </span>
+            <li><a href="/products?sort=asc">  Cheapest to expensivest</a></li>
+            <li><a href="/products?sort=desc">  Price Highest to lowest</a></li>
+            <li><a href="/products?discount=true"> On Discount</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <% @products.each_slice(3) do |slices|%>
+    <div class="row">
+      <% slices.each do |product|%>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <img src="#" class="img img-responsive" alt="Product Image">
+          <div class="caption">
+            <h4 class="pull-right">Rwf <%= product.price %></h4>
+            <h4><%= link_to product.name, product %></h4>
+            <p><%= product.description %></p>
+          </div>
+        </div>
+      </div>
+      <% end %> <!-- End of products loop -->
+    </div>
     <% end %> <!-- End of products loop -->
   </div>
 </div>
