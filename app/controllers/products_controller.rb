@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
 		elsif params[:discount]
 				@products = Product.all
 		else
-				@products = Product.all
+				@products = Product.all.order(created_at: :desc)
 		end
 	end
 

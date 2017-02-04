@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-	resources :products
 	resources :suppliers
+	resources :products do
+		resources :images
+	end
 
 	root 'products#index'
 
@@ -11,3 +13,4 @@ Rails.application.routes.draw do
 	get "/logout" => "sessions#destroy"
 
 end
+

@@ -23,7 +23,9 @@
       <% slices.each do |product|%>
       <div class="col-md-4">
         <div class="thumbnail">
-          <img src="<%= product.images.first.url %>" class="img img-responsive" alt="Product Image">
+          <%= link_to product do %>
+            <%= image_tag(product.images.first.url, :class => "img img-responsive") %>
+          <% end %>
           <div class="caption">
             <h4 class="pull-right">Rwf <%= product.price %></h4>
             <h4><%= link_to product.name, product %></h4>

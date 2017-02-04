@@ -1,0 +1,9 @@
+<h1>Adding a new image!</h1>
+
+<%= form_for @image.new, url: {action: "create"}) do |f| %>
+	<%= f.label :url %> <br>
+	<%= f.text_field :url %> <br> <br>
+	<%= f.label :product_id %> <br>
+	<%= f.text_field :product_id %> <br> <br>
+	<%= f.submit %> <br>
+<% end %>

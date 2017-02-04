@@ -21,7 +21,10 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'seed_dump', '~> 3.2', '>= 3.2.4'
 
 
+
 group :development, :test do
+  gem "better_errors"
+	gem "binding_of_caller"
   gem 'byebug', platform: :mri
 end
 
