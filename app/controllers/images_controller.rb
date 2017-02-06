@@ -1,36 +1,45 @@
-class ImagesController < ApplicationController
-	
+# class ImagesController < ApplicationController
+# 	before_action :find_image, only: [:show, :edit, :update, :destroy]
 
-	def new
-		@image = Image.new
-	end
+# 	def index
+# 		@images = Image.all
+# 		redirect_to @image	
+# 	end	
 
-	def create
-		@image = Image.new(image_params)
-		if @image.save
-			redirect_to '/'
-		end
-	end
+# 	def new
+# 		@image = Image.new
+# 	end
 
-	end
+# 	def create
+# 		@image = Image.new(image_params)
+# 		if @image.save
+# 			redirect_to '/'
+# 		end
+# 	end
 
-	def show
+# 	end
+
+# 	def show
 		
-	end
+# 	end
 
-	def edit
+# 	def edit
 		
 
-	def update
+# 	def update
 		
-	end
+# 	end
 
-	def delete
+# 	def delete
 		
-	end
+# 	end
 
-	private
-		def image_params
-			params.require(:image).permit(:url, :product_id)			
-		end
-end
+# 	private
+# 		def find_image
+# 			@image = Image.find(params[:id])			
+# 		end
+
+# 		def image_params
+# 			params.require(:image).permit(:url, :product_id)			
+# 		end
+# end

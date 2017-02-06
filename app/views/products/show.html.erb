@@ -1,13 +1,28 @@
 <div class="container-fluid">
   <h2><%= @product.name %></h2>
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-6">
         <% @product.images.each do |image| %>
           <img src="<%= image.url %>" alt="<%= @product.name %>">
         <% end %>
       </div>
     </div>
-  <p><%= @product.description %></p>
-   <p><strong>Brought to you by:</strong> <%= @product.supplier.name %> Ltd.</p>
-   <p><strong>Supplier contact:</strong> <%= @product.supplier.email %></p>
+    <div class="container">
+      <% if current_user %>
+      <%= form_tag "/orders", method: :post do %>
+        <div>
+          Quantity: <input type="text" name="quantity">
+        </div>
+        <div>
+          <input type="hidden" name="product_id" value="<%= @product.id %>">
+        </div>
+        <div>
+          <input type="submit" value="Buy Now!">
+        </div>
+      <% end %>
+    <% end %>
+    <p><%= @product.description %></p>
+     <p><strong>Brought to you by:</strong> <%= @product.supplier.name %> Ltd.</p>
+     <p><strong>Supplier contact:</strong> <%= @product.supplier.email %></p>
+     </div>
 </div>

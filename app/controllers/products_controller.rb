@@ -5,8 +5,8 @@ class ProductsController < ApplicationController
 	def index
 		if params[:sort]
 			@products = Product.all.order(price: params[:sort])
-		elsif params[:discount]
-				@products = Product.all
+		elsif params[:filter] == "discount"
+      @products = Product.discounted_products
 		else
 				@products = Product.all.order(created_at: :desc)
 		end
