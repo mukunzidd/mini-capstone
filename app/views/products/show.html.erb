@@ -21,6 +21,9 @@
         </div>
       <% end %>
     <% end %>
+    <%= link_to "Edit", edit_product_path(@product), class: "btn btn-default" %>
+    <%= link_to "Delete", "/products/#{@product.id}", method: :delete %>
+
     <p><%= @product.description %></p>
      <p><strong>Brought to you by:</strong> <%= @product.supplier.name %> Ltd.</p>
      <p><strong>Supplier contact:</strong> <%= @product.supplier.email %></p>
