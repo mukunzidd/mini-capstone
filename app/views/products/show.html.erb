@@ -9,7 +9,7 @@
     </div>
     <div class="container">
       <% if current_user %>
-      <%= form_tag "/orders", method: :post do %>
+      <%= form_tag "/cart", method: :post do %>
         <div>
           Quantity: <input type="text" name="quantity">
         </div>
@@ -17,7 +17,7 @@
           <input type="hidden" name="product_id" value="<%= @product.id %>">
         </div>
         <div>
-          <input type="submit" value="Buy Now!">
+          <input type="submit" value="Add To Cart">
         </div>
       <% end %>
     <% end %>

@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
 		elsif params[:filter] == "discount"
       @products = Product.discounted_products
 		else
-				@products = Product.all.order(created_at: :desc)
+			@products = Product.all.order(created_at: :desc)
 		end
 	end
 
