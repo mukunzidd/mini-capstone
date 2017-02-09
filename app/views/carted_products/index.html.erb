@@ -1,0 +1,27 @@
+<% if @message != nil %>
+	<%= @message %>
+<% else %>
+
+	<h1>Your Cart</h1>
+
+
+	<% @cart.each do |item| %>
+
+		<p>Product id: <%= item.product_id %></p> <br>
+		<ul>
+		<li>Quantity: <%= item.quantity %></li>
+		<li>Name: <%= item.product.name %></li>
+		<li>Price: <%= item.product.price %></li>
+		</ul>
+
+	<% end %>
+
+<%= form_tag "/orders/#{@order.id}", method: :put do %>
+
+        <div>
+          <input type="submit" value="Check Out">
+        </div>
+
+<% end %>
+
+<% end %>
